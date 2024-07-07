@@ -2,33 +2,39 @@ import React from "react";
 import Paper from "../ui-kit/Dialog";
 import InputField from "../ui-kit/Input";
 
-const LoginForm = () => {
+const SignupForm = () => {
   return (
     <div className="flex items-center justify-center w-full h-full bg-black">
-      <Paper heading="WELCOME BACK" subheading="Log into your account">
-        <div className="w-full mt-5 ">
+      <Paper heading="SIGN UP" subheading="Create an account to continue">
+        <div className="flex flex-col w-full mt-5 mb-5">
           <InputField
             label="Email"
             type="email"
             id="email"
-            placeholder="Enter your email or username"
+            placeholder="Enter your email"
+          />
+
+          <InputField
+            label="Username"
+            type="username"
+            id="username"
+            placeholder="Choose a preferred username"
           />
 
           <InputField
             label="Password"
             type="password"
             id="password"
-            placeholder="Enter your password"
-            helperLabel="Forgot your password?"
+            placeholder="Choose a strong password"
           />
           <button className="w-full px-4 py-2 mt-4 text-white bg-blue-500 rounded">
-            Login Now
+            Continue
           </button>
 
           <p className="mt-3 text-gray-500 text-md">
-            Not registered yet?{" "}
-            <a className="text-input-label-primary" href="/signup">
-              Register &#8594;
+            Already have an account?{" "}
+            <a className="text-input-label-primary" href="/">
+              Login &#8594;
             </a>
           </p>
         </div>
@@ -37,4 +43,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;

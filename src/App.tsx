@@ -1,12 +1,25 @@
 import React from "react";
-import "./App.css";
-import LoginForm from "./components/LoginForm";
+import Login from "./screens/Login";
+import Signup from "./screens/Signup";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+]);
 
 function App() {
   return (
-    <div className="bg-black h-screen w-screen">
-      <LoginForm />
-    </div>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   );
 }
 
