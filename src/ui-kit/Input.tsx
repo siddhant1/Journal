@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 interface InputFieldProps {
   label: string;
@@ -8,14 +8,17 @@ interface InputFieldProps {
   placeholder: string;
 }
 
-const InputField = ({
-  label,
-  helperLabel,
-  type = "text",
-  id,
-  placeholder,
-  ...rest
-}: InputFieldProps) => {
+const InputField = forwardRef(function InputField(
+  {
+    label,
+    helperLabel,
+    type = "text",
+    id,
+    placeholder,
+    ...rest
+  }: InputFieldProps,
+  ref: React.Ref<HTMLInputElement>
+) {
   return (
     <div className="mb-5">
       <div className="flex justify-between">
@@ -32,12 +35,13 @@ const InputField = ({
       <input
         type={type}
         id={id}
+        ref={ref}
         placeholder={placeholder}
         className="w-full px-4 py-3 leading-tight text-gray-100 border rounded border-input-border-primary bg-background-primary"
         {...rest}
       />
     </div>
   );
-};
+});
 
 export default InputField;

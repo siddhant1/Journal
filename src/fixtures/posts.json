@@ -1,0 +1,58 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "author": {
+        "name": "Theresa Webb",
+        "avatar": "https://randomuser.me/api/portraits/women/36.jpg"
+      },
+      "timestamp": "5 mins ago",
+      "content": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      "commentsCount": 24,
+      "emoji": "👍"
+    },
+    {
+      "id": 2,
+      "author": {
+        "name": "John Doe",
+        "avatar": "https://randomuser.me/api/portraits/men/32.jpg"
+      },
+      "timestamp": "1 hour ago",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet lorem. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet lorem.",
+      "commentsCount": 10,
+      "emoji": "👎"
+    },
+    {
+      "id": 3,
+      "author": {
+        "name": "Jane Smith",
+        "avatar": "https://randomuser.me/api/portraits/women/44.jpg"
+      },
+      "timestamp": "2 days ago",
+      "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "commentsCount": 5,
+      "emoji": "❤️"
+    },
+    {
+      "id": 4,
+      "author": {
+        "name": "John Doe",
+        "avatar": "https://randomuser.me/api/portraits/women/32.jpg"
+      },
+      "timestamp": "1 week ago",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet lorem. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet lorem.",
+      "commentsCount": 10,
+      "emoji": "😇"
+    },
+    {
+      "id": 5,
+      "author": {
+        "name": "Jane Smith",
+        "avatar": "https://randomuser.me/api/portraits/men/44.jpg"
+      },
+      "timestamp": "2 weeks ago",
+      "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "commentsCount": 5
+    }
+  ]
+}
