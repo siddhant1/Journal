@@ -10,9 +10,22 @@ const Posts = () => {
   const { posts } = postsData;
 
   return (
-    <div className="flex items-center justify-center py-5 bg-black">
+    <div className="flex flex-col items-center justify-center py-10 bg-black">
+      <div className="text-white w-[700px] mb-5">
+        <h1 className="mb-4 text-2xl font-medium text-input-label-primary">
+          Hello {user || "User"}
+        </h1>
+        <p className="mb-4 text-md text-text-content">
+          How are you doing today? Would you like to share something with the
+          community{" "}
+          <span role="img" aria-label="smile">
+            😊
+          </span>
+        </p>
+      </div>
+
       <div className="container flex flex-col items-center space-y-4">
-        <Post>
+        <Post createAble handleCreatePost={() => console.log("Creating post")}>
           <TextInput
             placeholder="How are you feeling today"
             onChange={(e) => console.log(e.target.value)}

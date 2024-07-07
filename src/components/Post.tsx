@@ -8,6 +8,8 @@ interface PostProps {
   timestamp?: string;
   commentsCount?: number;
   emoji?: string;
+  createAble?: boolean;
+  handleCreatePost?: () => void;
 }
 
 const Post: React.FC<PostProps> = ({
@@ -16,6 +18,8 @@ const Post: React.FC<PostProps> = ({
   children,
   commentsCount = 0,
   emoji,
+  createAble,
+  handleCreatePost,
 }) => {
   return (
     <div className="py-7 px-5 w-[700px]  rounded-lg shadow-md bg-input-border-primary">
@@ -56,6 +60,16 @@ const Post: React.FC<PostProps> = ({
           <span className="text-sm text-gray-400">
             {commentsCount} comments
           </span>
+        </div>
+      )}
+      {createAble && (
+        <div className="flex items-center justify-end text-right">
+          <button
+            onClick={handleCreatePost}
+            className="w-[111px] h-[43px] mt-4 text-white bg-blue-500 rounded"
+          >
+            Post
+          </button>
         </div>
       )}
     </div>
