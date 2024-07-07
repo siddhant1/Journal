@@ -8,7 +8,9 @@ export default {
     extend: {
       colors: {
         'background-primary': '#27292D',
-        'heading-primary': '#6B6C70'
+        'heading-primary': '#6B6C70',
+        'input-label-primary': '#C5C7CA',
+        'input-border-primary': '#35373B'
       },
       fontSize: {
         'heading': '14px',

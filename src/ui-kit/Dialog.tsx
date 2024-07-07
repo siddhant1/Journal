@@ -14,9 +14,9 @@ const Paper: React.FC<PaperProps> = ({ heading, subheading, children }) => {
         </h2>
       )}
       {subheading && (
-        <p className="text-white mb-4 text-lg font-semibold">{subheading}</p>
+        <p className="mb-4 text-lg font-semibold text-white">{subheading}</p>
       )}
-      <div>{children}</div>
+      {children}
     </div>
   );
 };
