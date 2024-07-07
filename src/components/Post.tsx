@@ -8,7 +8,6 @@ interface PostProps {
   timestamp?: string;
   commentsCount?: number;
   emoji?: string;
-  createPostRenderer?: React.ReactNode;
 }
 
 const Post: React.FC<PostProps> = ({
@@ -17,7 +16,6 @@ const Post: React.FC<PostProps> = ({
   children,
   commentsCount = 0,
   emoji,
-  createPostRenderer,
 }) => {
   return (
     <div className="py-7 px-5 w-[700px]  rounded-lg shadow-md bg-input-border-primary">
@@ -50,7 +48,7 @@ const Post: React.FC<PostProps> = ({
             <button>{emoji || ""}</button>
           </div>
         )}
-        <div className="w-full">{children}</div>
+        <div className="w-full break-all">{children}</div>
       </div>
       {commentsCount > 0 && (
         <div className="flex items-center">
@@ -60,7 +58,6 @@ const Post: React.FC<PostProps> = ({
           </span>
         </div>
       )}
-      {!!createPostRenderer && createPostRenderer}
     </div>
   );
 };
