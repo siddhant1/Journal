@@ -2,13 +2,29 @@ import React from "react";
 
 const MIN_TEXTAREA_HEIGHT = 0;
 
-export default function TextAreaAutoSize(
-  props: React.TextareaHTMLAttributes<HTMLTextAreaElement>
-) {
+const TextAreaAutoSize = ({
+  value,
+  onChange,
+  textAreaProps,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  textAreaProps: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+}) => {
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
-  const [value, setValue] = React.useState("");
-  const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
-    setValue(event.target.value);
+  const [inputValue, setValue] = React.useState(value);
+  const handleTextAreaChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    if (onChange) {
+      onChange(event.target.value);
+      setValue(event.target.value);
+    }
+  };
+
+  React.useEffect(() => {
+    setValue(value);
+  }, [value]);
 
   React.useLayoutEffect(() => {
     if (!textareaRef.current) return;
@@ -19,18 +35,20 @@ export default function TextAreaAutoSize(
       textareaRef.current.scrollHeight,
       MIN_TEXTAREA_HEIGHT
     )}px`;
-  }, [value]);
+  }, [inputValue]);
 
   return (
     <textarea
-      {...props}
-      onChange={onChange}
+      {...textAreaProps}
+      onChange={handleTextAreaChange}
       ref={textareaRef}
       style={{
         minHeight: MIN_TEXTAREA_HEIGHT,
         resize: "none",
       }}
-      value={value}
+      value={inputValue}
     />
   );
-}
+};
+
+export default TextAreaAutoSize;

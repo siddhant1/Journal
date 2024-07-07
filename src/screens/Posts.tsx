@@ -1,13 +1,31 @@
 import React from "react";
-import useAuth from "../hooks/useAuth";
-import postsData from "../fixtures/posts.json";
-import Post from "../components/Post";
-import InputField from "../ui-kit/Input";
+import { Post as PostClass } from "../models/Post";
 import TextInput from "../components/TextField";
+import postsData from "../fixtures/posts.json";
+import useAuth from "../hooks/useAuth";
+import Post from "../components/Post";
 
 const Posts = () => {
   const { user } = useAuth();
   const { posts } = postsData;
+  const [postContent, setPostContent] = React.useState(posts);
+
+  const handleCreatePost = (post: PostClass) => {
+    setPostContent([
+      {
+        id: postContent.length + 1,
+        author: {
+          name: user,
+          avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+        },
+        content: post.content,
+        timestamp: post.timestamp,
+        commentsCount: post.commentsCount,
+        emoji: post.emoji,
+      },
+      ...postContent,
+    ]);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center py-10 bg-black">
@@ -25,13 +43,12 @@ const Posts = () => {
       </div>
 
       <div className="container flex flex-col items-center space-y-4">
-        <Post createAble handleCreatePost={() => console.log("Creating post")}>
-          <TextInput
-            placeholder="How are you feeling today"
-            onChange={(e) => console.log(e.target.value)}
-          />
-        </Post>
-        {posts.map((post) => (
+        <TextInput
+          placeholder="How are you feeling today"
+          onChange={handleCreatePost}
+        />
+
+        {postContent.map((post) => (
           <Post
             key={post.id}
             author={post.author}
