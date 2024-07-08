@@ -2,9 +2,12 @@ import React from "react";
 import Paper from "../ui-kit/Paper";
 import InputField from "../ui-kit/Input";
 import useAuth from "../hooks/useAuth";
+import { redirect, useLocation, useNavigate } from "react-router-dom";
 
 const LoginForm = ({ changeForm }: { changeForm: () => void }) => {
   const { loginUser } = useAuth();
+  const navigate = useNavigate();
+
   const emailRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
 
@@ -13,7 +16,9 @@ const LoginForm = ({ changeForm }: { changeForm: () => void }) => {
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
     if (email && password) {
+      console.log("yo");
       loginUser(email);
+      navigate("/posts");
     }
   };
 
