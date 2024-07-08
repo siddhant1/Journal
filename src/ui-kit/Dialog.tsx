@@ -1,24 +1,68 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
-interface PaperProps {
-  heading?: string;
-  subheading?: string;
-}
+const Modal = ({
+  isOpen,
+  onClose,
+  children,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}) => {
+  const modalRef = useRef<HTMLDivElement>(null);
 
-const Paper: React.FC<PaperProps> = ({ heading, subheading, children }) => {
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) {
+    return null;
+  }
+
   return (
-    <div className="bg-background-primary flex flex-col  justify-center items-center  rounded-lg shadow-lg py-10 px-6 min-w-[463px]">
-      {heading && (
-        <h2 className="text-heading font-normal mb-2 text-heading-primary tracking-[-0.25px]">
-          {heading}
-        </h2>
-      )}
-      {subheading && (
-        <p className="mb-4 text-lg font-semibold text-white">{subheading}</p>
-      )}
-      {children}
+    <div className="fixed inset-0 z-50 flex items-center justify-center h-screen overflow-hidden backdrop-blur-md">
+      <div className="fixed inset-0 w-full h-screen overflow-hidden bg-black opacity-50"></div>
+      <div
+        ref={modalRef}
+        className="z-10 max-w-md mx-auto bg-white rounded-lg shadow-lg"
+      >
+        <button
+          className="absolute text-gray-500 top-2 right-2 hover:text-gray-800"
+          onClick={onClose}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        {children}
+      </div>
     </div>
   );
 };
 
-export default Paper;
+export default Modal;

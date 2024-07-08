@@ -1,9 +1,9 @@
 import React from "react";
-import Paper from "../ui-kit/Dialog";
+import Paper from "../ui-kit/Paper";
 import InputField from "../ui-kit/Input";
 import useAuth from "../hooks/useAuth";
 
-const LoginForm = () => {
+const LoginForm = ({ changeForm }: { changeForm: () => void }) => {
   const { loginUser } = useAuth();
   const emailRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
@@ -45,12 +45,15 @@ const LoginForm = () => {
               Login Now
             </button>
 
-            <p className="mt-3 text-gray-500 text-md">
-              Not registered yet?{" "}
-              <a className="text-input-label-primary" href="/signup">
+            <div className="flex mt-3 space-x-2 text-gray-500 text-md">
+              <p>Not registered yet? </p>
+              <p
+                className="cursor-pointer text-input-label-primary"
+                onClick={changeForm}
+              >
                 Register &#8594;
-              </a>
-            </p>
+              </p>
+            </div>
           </div>
         </form>
       </Paper>

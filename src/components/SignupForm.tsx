@@ -1,8 +1,8 @@
 import React from "react";
-import Paper from "../ui-kit/Dialog";
+import Paper from "../ui-kit/Paper";
 import InputField from "../ui-kit/Input";
 
-const SignupForm = () => {
+const SignupForm = ({ changeForm }: { changeForm: () => void }) => {
   return (
     <div className="flex items-center justify-center w-full h-full bg-black">
       <Paper heading="SIGN UP" subheading="Create an account to continue">
@@ -31,12 +31,15 @@ const SignupForm = () => {
             Continue
           </button>
 
-          <p className="mt-3 text-gray-500 text-md">
-            Already have an account?{" "}
-            <a className="text-input-label-primary" href="/">
+          <div className="flex mt-3 space-x-2 text-gray-500 text-md">
+            <p>Already have an account?</p>
+            <p
+              className="cursor-pointer text-input-label-primary"
+              onClick={changeForm}
+            >
               Login &#8594;
-            </a>
-          </p>
+            </p>
+          </div>
         </div>
       </Paper>
     </div>
